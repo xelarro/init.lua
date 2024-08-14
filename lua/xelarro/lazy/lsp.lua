@@ -42,7 +42,6 @@ return {
 								}
 							}
 						},
-						filetypes = { 'yaml' },
 					}
 				end,
 				["gopls"] = function()
