@@ -10,4 +10,4 @@ NEOVIM_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest 
 
 wget --quiet ${NEOVIM_URL} -O /tmp/nvim-linux64.tar.gz
 tar -xavf /tmp/nvim-linux64.tar.gz -C $HOME/
-ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
+sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
