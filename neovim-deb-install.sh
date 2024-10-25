@@ -2,7 +2,12 @@
 
 set -eou pipefail
 
-sudo apt update && sudo apt install -y ripgrep jq
+if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
+	sudo apt update && sudo apt install -y ripgrep jq curl wget unzip npm rust golang
+else
+	apt update && apt install -y ripgrep jq curl wget unzip npm rust golang
+fi
+
 
 cd $HOME
 
@@ -10,4 +15,8 @@ NEOVIM_URL=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest 
 
 wget --quiet ${NEOVIM_URL} -O /tmp/nvim-linux64.tar.gz
 tar -xavf /tmp/nvim-linux64.tar.gz -C $HOME/
-sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
+if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
+	sudo ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
+else
+	ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
+fi
