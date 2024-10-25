@@ -20,3 +20,5 @@ if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
 else
 	ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
 fi
+
+rustup default stable &&  rustup component add rust-analyzer
