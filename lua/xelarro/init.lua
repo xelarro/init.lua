@@ -70,16 +70,3 @@ vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
 vim.filetype.add({ extension = { templ = "templ" } })
-
-
--- Ensure the golangci-lint is installed
-local function ensure_golangci_lint_installed()
-    local mason = require("mason-registry")
-	if mason.is_installed("golangci-lint") then
-		return
-    end
-	vim.api.nvim_command("MasonInstall golangci-lint")
-end
-
--- Call the function to ensure golangci-lint is installed
-ensure_golangci_lint_installed()

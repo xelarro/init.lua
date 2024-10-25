@@ -3,9 +3,9 @@
 set -eou pipefail
 
 if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
-	sudo apt update && sudo apt install -y ripgrep jq curl wget unzip npm rust golang
+	sudo apt update && sudo apt install -y ripgrep jq curl wget unzip gcc
 else
-	apt update && apt install -y ripgrep jq curl wget unzip npm rust golang
+	apt update && apt install -y ripgrep jq curl wget unzip gcc
 fi
 
 
@@ -20,5 +20,3 @@ if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
 else
 	ln -s $HOME/nvim-linux64/bin/nvim /usr/bin/nvim
 fi
-
-rustup default stable &&  rustup component add rust-analyzer

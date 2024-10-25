@@ -24,65 +24,10 @@ return {
 		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
-			ensure_installed = { "ansiblels", "lua_ls", "gopls", "golangci_lint_ls", "bashls", "zls", "pyright"},
 			handlers = {
 				function(server_name) -- default handler (optional) in the mason-lsp config auto configuration section
 					require("lspconfig")[server_name].setup {
 						capabilities = capabilities
-					}
-				end,
-				["ansiblels"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.ansiblels.setup {
-						capabilities = capabilities,
-						settings = {
-							ansible = {
-								completion = {
-									provideRedirectModules = true,
-									provideModuleOptionAliases = true,
-								}
-							}
-						},
-						filetypes = { 'yaml' },
-					}
-				end,
-				["gopls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.gopls.setup {
-						capabilities = capabilities,
-						settings = {
-							gopls = {
-								experimentalPostfixCompletions = true,
-								analyses = {
-									unusedparams = true,
-									shadow = true,
-								},
-								staticcheck = true,
-								hints = {
-									assignVariableTypes = true,
-									compositeLiteralFields = true,
-									compositeLiteralType = true,
-									constantValues = true,
-									functionTypeParameters = true,
-									parameterNames = true,
-									rangeVariableTypes = false,
-								},
-							},
-						}
-					}
-				end,
-				["lua_ls"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.lua_ls.setup {
-						capabilities = capabilities,
-						settings = {
-							Lua = {
-								runtime = { version = "Lua 5.1" },
-								diagnostics = {
-									globals = { "vim", "it", "describe", "before_each", "after_each" },
-								}
-							}
-						}
 					}
 				end,
 			}
