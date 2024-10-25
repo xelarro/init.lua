@@ -3,9 +3,9 @@
 set -eou pipefail
 
 if [[ $(id -u 2>/dev/null) -ne 0 ]]; then
-	sudo apt update && sudo apt install -y ripgrep jq curl wget unzip gcc
+	sudo apt update && sudo apt install -y ripgrep jq curl wget unzip gcc npm
 else
-	apt update && apt install -y ripgrep jq curl wget unzip gcc
+	apt update && apt install -y ripgrep jq curl wget unzip gcc npm
 fi
 
 
